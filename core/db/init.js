@@ -2,21 +2,40 @@ mongoose = require('mongoose');
 guildSchema = require('./schemas/guild');
 
 module.exports = async function (bot) {
-  const guildModel = mongoose.model('Guild', guildSchema);
+  if (!bot.db) bot.db = {
+    models: {},
+    data: {}
+  };
+  if (!bot.db.models) bot.db.models = {};
+  if (!bot.db.data) bot.db.data = {};
 
-  const dbGuildsQuery = await guildModel.find();
-  const dbGuilds = {};
-  dbGuildsQuery.forEach(dbGuild => {
-    dbGuilds[dbGuild._id] = dbGuild;
-  });
+  let initGuilds = () => {
+    // initialize model
+    const guildModel = mongoose.model('Guild', guildSchema);
+    const guilds = {};
 
-  bot.guilds.cache.each(botGuild => {
-    if (dbGuilds[botGuild.id]) return;
-    new guildModel({
-      name: botGuild.name,
-      _id: botGuild.id,
-    }).save((err) => {if (!err) return; console.error(err);});
-  });
+    // get all existing documents
+    (await guildModel.find()).forEach(guild => {
+      guilds[guild._id] = guild
+    });
 
-  console.log(dbGuilds);
+    // determine documents we need to insert
+    const guildsToInsert = [];
+    bot.guilds.cache.each(guild => {
+      if (guilds[guild.id]) return;
+      guildsToInsert.push({
+        name: guild.name,
+        _id: guild.id
+      });
+    });
+
+    // insert missing documents
+    await guildModel.insertMany(guildsToInsert, function(error, docs) {
+      if (error) console.error(error);
+      docs.forEach((doc) => {
+        guilds[doc._id] = doc;
+      });
+    });
+  };
+  initGuilds();
 }
