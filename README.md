@@ -9,7 +9,7 @@
 - [x] Guilds and Prefixes
 #### Database Initial Functions
 - [x] Database connection
-- [-] Database initialization
+- [ ] Database initialization
 ##### Channels to keep track of
 - [ ] Channels to move deleted message from to Recycle Bin
 - [ ] Recycle Bin
