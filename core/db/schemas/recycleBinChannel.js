@@ -3,9 +3,8 @@ const { Schema } = mongoose;
 
 module.exports = new Schema({
   _id: String,
-  name: String,
-  prefix: {
+  guildId: {
     type: String,
-    default: '!'
+    ref: 'Guild'
   }
 });
