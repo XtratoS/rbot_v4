@@ -12,12 +12,12 @@
 - [ ] Database initialization
 ##### Channels to keep track of
 - [ ] Channels to move deleted message from to Recycle Bin
-- [ ] Recycle Bin
+- [x] Recycle Bin
 - [ ] Modmail
 ## Commands
 ### Initialization Commands
 - [ ] toggleRecyclableChannel <channel_id>
-- [ ] setRecycleBin <channel_id>
+- [x] setRecycleBin <channel_id>
 - [ ] setModMailChannel <channel_id>
 - [ ] toggleModMailMember <user_id>
 - [ ] role @role @member
@@ -27,3 +27,5 @@
 - [ ] expRoles
 - [ ] expMap
 ### Normal Commands
+- [ ] voteKick @member
+- [ ] hangman
