@@ -22,6 +22,14 @@ module.exports = async function(bot) {
   }
   console.groupEnd();
   console.log('====Finished loading commands====');
+  console.log('====Started Connecting to Database====');
+  console.group();
   await dbConnect();
+  console.groupEnd();
+  console.log('====Finished Connecting to Database====');
+  console.log('====Started Loading Database to Memory====');
+  console.group();
   dbInit(bot);
+  console.groupEnd();
+  console.log('====Finished Loading Database to Memory====');
 }
