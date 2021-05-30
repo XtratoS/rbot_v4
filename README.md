@@ -29,3 +29,9 @@
 ### Normal Commands
 - [ ] voteKick @member
 - [ ] hangman
+- [ ] addReminder
+  - Adds a maximum of 8 1-time reminders
+- [ ] addPeriodicReminder
+  - Adds a maximum of 8 periodic reminders
+- [ ] reminders
+  - Shows all reminders and adds option to remove them
