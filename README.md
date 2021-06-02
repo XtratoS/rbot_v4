@@ -3,7 +3,13 @@
 ### User Verification
 - [ ] ID Verification
 ### Role Reaction
+- [ ] addReactionRole <message_id> @role :emote:
+- [ ] react <message_id> :emote:
 ### Levelup System
+- [ ] expMap
+- [ ] expRoleMap
+- [ ] addExpRole
+- [ ] removeExpRole
 ### Database
 #### Database Layout
 - [x] Guilds and Prefixes
